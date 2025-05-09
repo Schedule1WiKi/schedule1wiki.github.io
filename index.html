@@ -1,0 +1,2312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule 1 Wiki</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0d12;
+            --bg-secondary: #12171f;
+            --bg-tertiary: #1a212c;
+            --accent-neon: #00ff88;
+            --accent-orange: #ff6600;
+            --text-primary: #e4e4e4;
+            --text-secondary: #a0a8b0;
+            --border-color: #2a3440;
+            --search-bg: #151b24;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            padding: 40px 0;
+            border-bottom: 3px solid var(--bg-tertiary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5em;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--accent-neon);
+        }
+
+        .nav-search {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 12px 20px;
+            width: 300px;
+            background-color: var(--search-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-neon);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .community-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .community-link {
+            color: var(--text-secondary);
+            font-size: 1.3em;
+            transition: all 0.3s ease;
+        }
+
+        .community-link:hover {
+            color: var(--accent-neon);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--bg-secondary);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 30px;
+            padding: 0 40px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--bg-tertiary);
+            color: var(--accent-neon);
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+            padding: 40px;
+            min-height: calc(100vh - 200px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--bg-secondary);
+            border-radius: 10px;
+            padding: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 200px;
+        }
+
+        .sidebar h3 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--accent-neon);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 1.1em;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .sidebar a:hover {
+            color: var(--text-primary);
+            padding-left: 10px;
+        }
+
+        /* Content */
+        .content {
+            background-color: var(--bg-secondary);
+            border-radius: 10px;
+            padding: 40px;
+        }
+
+        .content h2 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .content h3 {
+            color: var(--accent-neon);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .content h4 {
+            color: var(--accent-orange);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background-color: var(--bg-tertiary);
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .tab.active {
+            background-color: var(--bg-secondary);
+            color: var(--accent-neon);
+            border-bottom: 2px solid var(--accent-neon);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Collapse Sections */
+        .collapse-section {
+            margin-bottom: 20px;
+        }
+
+        .collapse-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: var(--bg-tertiary);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .collapse-header:hover {
+            background-color: rgba(26, 33, 44, 0.8);
+        }
+
+        .collapse-content {
+            display: none;
+            padding: 20px;
+            background-color: rgba(10, 13, 18, 0.5);
+            border-left: 3px solid var(--accent-neon);
+            margin-top: 10px;
+        }
+
+        .collapse-content.active {
+            display: block;
+        }
+
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background-color: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: var(--accent-orange);
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.1);
+        }
+
+        .info-card h4 {
+            color: var(--accent-orange);
+            margin-bottom: 10px;
+        }
+
+        /* Tables */
+        .wiki-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: var(--bg-tertiary);
+        }
+
+        .wiki-table th,
+        .wiki-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        .wiki-table th {
+            background-color: var(--bg-primary);
+            color: var(--accent-neon);
+            font-weight: 600;
+        }
+
+        .wiki-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Tags */
+        .tag {
+            display: inline-block;
+            background-color: rgba(0, 255, 136, 0.1);
+            color: var(--accent-neon);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin-right: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-primary);
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .search-input {
+                width: 100%;
+            }
+        }
+
+        /* Highlights */
+        .highlight {
+            background-color: rgba(255, 102, 0, 0.2);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* Tips */
+        .tip-box {
+            background-color: var(--bg-tertiary);
+            border-left: 4px solid var(--accent-orange);
+            padding: 15px 15px 15px 25px;
+            margin: 20px 0;
+        }
+
+        .tip-box h4 {
+            color: var(--accent-orange);
+            margin-bottom: 10px;
+        }
+
+        /* Commands */
+        .command-box {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            color: var(--accent-neon);
+        }
+
+        .kbd {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            padding: 2px 6px;
+            font-family: 'Courier New', monospace;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-flask"></i>
+                <h1>Schedule <span>1</span> Wiki</h1>
+            </div>
+            <div class="nav-search">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search the wiki..." id="wikiSearch">
+                </div>
+                <div class="community-links">
+                    <a href="https://store.steampowered.com/app/2524080/Schedule_I/" class="community-link"><i class="fab fa-steam"></i></a>
+                    <a href="#" class="community-link"><i class="fab fa-reddit"></i></a>
+                    <a href="#" class="community-link"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+            <a href="#story" class="nav-link"><i class="fas fa-book"></i> Story & Lore</a>
+            <a href="#characters" class="nav-link"><i class="fas fa-users"></i> Characters</a>
+            <a href="#gameplay" class="nav-link"><i class="fas fa-gamepad"></i> Gameplay</a>
+            <a href="#maps" class="nav-link"><i class="fas fa-map"></i> Maps</a>
+            <a href="#items" class="nav-link"><i class="fas fa-box"></i> Items</a>
+            <a href="#guides" class="nav-link"><i class="fas fa-compass"></i> Guides</a>
+            <a href="#community" class="nav-link"><i class="fas fa-comments"></i> Community</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <h3>Quick Navigation</h3>
+            <ul>
+                <li><a href="#getting-started">Getting Started</a></li>
+                <li><a href="#drug-production">Drug Production</a></li>
+                <li><a href="#hyland-point">Hyland Point</a></li>
+                <li><a href="#police-system">Police System</a></li>
+                <li><a href="#employee-management">Employee Management</a></li>
+                <li><a href="#business-expansion">Business Expansion</a></li>
+                <li><a href="#controls">Controls</a></li>
+                <li><a href="#multiplayer">Multiplayer</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <div id="home">
+                <h2>Welcome to the Schedule 1 Wiki</h2>
+                <p>Step into the ultimate resource for <strong>Schedule 1</strong>, the cartoon-style drug empire simulator that's quickly becoming a Steam legend. Whether you're starting your first grow operation or building a cross-city distribution network, this wiki has everything you need to dominate Hyland Point's underground scene.</p>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>The Game Experience</h4>
+                        <p>A uniquely entertaining blend of business management and crime simulation wrapped in a cartoon aesthetic that makes breaking bad surprisingly fun.</p>
+                        <span class="tag">99% Positive</span>
+                        <span class="tag">TVGS</span>
+                    </div>
+                    <div class="info-card">
+                        <h4>Release Details</h4>
+                        <p>Launched March 24, 2025 in Early Access</p>
+                        <span class="tag">PC/Steam</span>
+                        <span class="tag">$20</span>
+                        <span class="tag">1.7M Demo Players</span>
+                    </div>
+                    <div class="info-card">
+                        <h4>Game World</h4>
+                        <p>Hyland Point - A sprawling west coast metropolis with six distinct districts, each presenting unique opportunities and challenges for your criminal ventures.</p>
+                        <span class="tag">Open World</span>
+                        <span class="tag">Multiplayer</span>
+                    </div>
+                </div>
+
+                <h3>What is Schedule 1?</h3>
+                <p>Schedule 1 drops you into the shoes of an ambitious drug dealer navigating the criminal underworld of Hyland Point. Starting from street-level deals, you'll build a sophisticated operation complete with production labs, distribution networks, and legitimate business fronts to launder your profits.</p>
+                
+                <p>What sets this game apart is its perfect balance of depth and humor. Behind the cartoon visuals lies a complex simulation that challenges you to manage resources, avoid law enforcement, and outmaneuver rival operations. Whether playing solo or with friends (2-4 player co-op), there's always another operation to plan, another territory to claim, or another cop to evade.</p>
+
+                <div class="tip-box">
+                    <h4>Active Development</h4>
+                    <p>TVGS has committed to an ambitious two-year roadmap with monthly updates. New content, improved AI, expanded districts, and fresh mechanics are constantly being added. The Early Access price of $20 represents excellent value, with full release pricing expected to jump 25-50%.</p>
+                </div>
+
+                <h3>Why Schedule 1 is Worth Your Time</h3>
+                <p>Within 24 hours of launching Early Access, Schedule 1 hit #1 on Steam's bestseller list with an "Overwhelmingly Positive" rating of 99%. Over 1.7 million players experienced the demo before launch, and the community continues to grow rapidly.</p>
+                
+                <p>From your first grow tent purchase to managing a multi-district empire, this wiki breaks down every system, strategy, and secret the game has to offer. Dive into our guides to master production chains, learn the best distribution routes, understand the heat system, and discover the most profitable business fronts.</p>
+            </div>
+
+            <div id="story" style="display: none;">
+                <h2>Story & Lore</h2>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="switchLoreTab(event, 'storyline')">The Campaign</button>
+                    <button class="tab" onclick="switchLoreTab(event, 'unclenelson')">Uncle Nelson</button>
+                    <button class="tab" onclick="switchLoreTab(event, 'districts')">The Districts</button>
+                </div>
+
+                <div id="storyline" class="tab-content active">
+                    <h3>From Desert to Kingpin: Your Rise in Hyland Point</h3>
+                    <p>Your story begins in the sleepy desert town of Serene Flats, where you've been working under your Uncle Nelson out of an RV, growing and dealing pot to the local addicts. It's a quiet life, maybe too quiet for someone with bigger ambitions. But everything changes one night when a police sting hits Nelson's ranch.</p>
+                    
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>The Night Everything Changed</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <p>The sirens pierce through the desert night. Cops are swarming the ranch, and you barely make it to the RV before they spot you. Heart pounding, you slam the vehicle in gear and drive—just drive—until the desert gives way to urban sprawl. Welcome to Hyland Point, they say. The scenic cesspit where dreams go to die, but fortunes are made.</p>
+                            
+                            <p>You park the RV and think you've made it. You've escaped. You're safe. Then... BOOM. A massive explosion rocks the night. Your RV—your home, your lab, everything—is suddenly a smoldering crater. Standing in the wreckage, you realize this isn't just bad luck. This is a message from rival cartels: "Stay small, or don't stay at all."</p>
+                        </div>
+                    </div>
+
+                    <h4>The Voice on the Payphone</h4>
+                    <p>Just when you think it's over, a payphone rings. It's Uncle Nelson. Somehow, he's evaded the cops and he's got news that changes everything. This isn't the end—it's your beginning. Nelson's been planning this for years. Hidden across Hyland Point are cash stashes, ready for this exact moment. He's not just your uncle; he's your mentor, your guide to becoming something more than a street dealer.</p>
+
+                    <div class="tip-box">
+                        <h4>Pro Tip: The Prologue Stash</h4>
+                        <p>Before your RV explodes, you can grab your grow setup! Two LED grow lights and pots are worth keeping—you won't get replacement opportunities until much later. This single action can dramatically speed up your early game progress.</p>
+                    </div>
+
+                    <h3>Your Path to Power</h3>
+                    <p>Hyland Point isn't just a new city—it's a game board, and you're about to learn the rules. From the moment that payphone rings, Nelson becomes your ghostly guide, accessible only through the city's scattered payphones. Each call brings new contacts, new opportunities, and new dangers.</p>
+
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>The Tutorial Quests</h4>
+                            <p>Learn the fundamentals: buying seeds, finding customers, dealing with cops</p>
+                            <span class="tag">Albert Hoover</span>
+                            <span class="tag">Dead Drops</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Building Your Network</h4>
+                            <p>Recruit dealers, establish territories, expand production</p>
+                            <span class="tag">Benji Coleman</span>
+                            <span class="tag">Distribution</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Becoming The Kingpin</h4>
+                            <p>Six districts, each with unique challenges and rewards</p>
+                            <span class="tag">65 Ranks</span>
+                            <span class="tag">$10M Empire</span>
+                        </div>
+                    </div>
+
+                    <h4>The Unseen Threat</h4>
+                    <p>Remember that explosion? That was just the beginning. While you're building your empire, somewhere in the shadows, rival cartels are watching. The game hints at larger threats, bigger players, and eventually—if the developers deliver on their promises—a full-blown war for Hyland Point's soul.</p>
+                </div>
+
+                <div id="unclenelson" class="tab-content">
+                    <h3>Uncle Nelson: Your Shadow Mentor</h3>
+                    <p>If there's one person who defines your journey in Schedule 1, it's Uncle Nelson. Part family, part criminal mastermind, all mystery. You first meet him on your family ranch outside Serene Flats, sitting on the porch in his wheelchair—a figure who's seen more than he's willing to share.</p>
+
+                    <h4>A Life Half-Told</h4>
+                    <p>Nelson lived in Hyland Point before you ever arrived. He's got history here—stashes of cash buried throughout the city, connections that run deep, and enemies who remember his name. How did he end up in that wheelchair? Why did he retreat to the desert? These questions linger as you follow his guidance.</p>
+
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Teaching from the Shadows</h4>
+                            <p>After the RV explosion, Nelson becomes your invisible guide, only reachable through payphones.</p>
+                            <span class="tag">Payphone Calls</span>
+                            <span class="tag">Strategic Advice</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Hidden Stashes</h4>
+                            <p>Nelson's foresight has left caches of cash throughout Hyland Point—your lifeline in desperate moments.</p>
+                            <span class="tag">Emergency Funds</span>
+                            <span class="tag">Strategic Locations</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>The Master Plan</h4>
+                            <p>Every call, every contact Nelson gives you is part of a larger strategy to make you a kingpin.</p>
+                            <span class="tag">Albert Hoover</span>
+                            <span class="tag">Dealer Network</span>
+                        </div>
+                    </div>
+
+                    <h4>The Uncle Nelson Mystery</h4>
+                    <p>Is Uncle Nelson just a helpful relative, or is he playing a deeper game? His knowledge of Hyland Point runs impossibly deep. He knows exactly where to hide money, exactly who to trust, exactly how to build an empire. Some players theorize he was once what you're trying to become—and the wheelchair is a reminder of how that ended.</p>
+
+                    <div class="tip-box">
+                        <h4>Nelson's Golden Rule</h4>
+                        <p>"Stay small, stay safe. Get big, be smart." Everything Uncle Nelson teaches you boils down to this: power attracts attention, and attention attracts danger. Are you ready for both?</p>
+                    </div>
+                </div>
+
+                <div id="districts" class="tab-content">
+                    <h3>The Six Kingdoms of Hyland Point</h3>
+                    <p>Hyland Point isn't just one city—it's six distinct territories, each with its own character, challenges, and opportunities. Your rise from street dealer to kingpin means conquering them all, one rank at a time.</p>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Northtown</h4>
+                            <p>Your starting ground, where the standards are low and the money flows steady. Dan's Hardware, the Motel, and countless shady corners make this the perfect training ground.</p>
+                            <span class="tag">Rank: Start</span>
+                            <span class="tag">Dealer: Benji Coleman</span>
+                            <span class="tag">Customer Standards: Low</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Westville</h4>
+                            <p>The working-class district with lakeside charm. The boardwalk and construction sites offer perfect dealing spots, while the Bungalow becomes your first major property investment.</p>
+                            <span class="tag">Rank: Hoodlum 1</span>
+                            <span class="tag">Dealer: Molly Presley</span>
+                            <span class="tag">Customer Standards: Low-Medium</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Downtown</h4>
+                            <p>Money laundering central, where legitimate businesses hide dirty cash. The Casino, Mayor's House, and Ray's Realty define this district where appearance matters as much as product.</p>
+                            <span class="tag">Rank: Hustler 1</span>
+                            <span class="tag">Dealer: Brad Crosby</span>
+                            <span class="tag">Customer Standards: Medium-High</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Docks</h4>
+                            <p>Industrial wasteland meets smuggling haven. The Docks Warehouse offers massive storage capacity, while the waterfront provides discrete shipping opportunities.</p>
+                            <span class="tag">Rank: Enforcer 1</span>
+                            <span class="tag">Dealer: Jane Lucero</span>
+                            <span class="tag">Customer Standards: Medium-High</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Suburbia</h4>
+                            <p>Verdant neighborhoods hiding desperate housewives and weekend warriors. The money is excellent, but the clientele demands perfection in both product and discretion.</p>
+                            <span class="tag">Rank: Block Boss 1</span>
+                            <span class="tag">Dealer: Wei Long</span>
+                            <span class="tag">Customer Standards: High</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Uptown</h4>
+                            <p>The final frontier—nightlife, wealth, and endless opportunity. Club scenes and penthouse parties make this the ultimate test of your criminal enterprise.</p>
+                            <span class="tag">Rank: Baron 1</span>
+                            <span class="tag">Dealer: Leo Rivers</span>
+                            <span class="tag">Customer Standards: Premium</span>
+                        </div>
+                    </div>
+
+                    <h4>The Geography of Power</h4>
+                    <p>Each district unlock represents more than just new customers—it's a promotion in Hyland Point's criminal hierarchy. As you progress from Northtown's skate parks to Uptown's exclusive clubs, the product quality demands increase, but so do the profits. By the time you're dealing in Suburbia and Uptown, you're not just a dealer—you're a tastemaker, an influencer in the underground economy.</p>
+
+                    <div class="tip-box">
+                        <h4>District Progression Strategy</h4>
+                        <p>Don't rush to new districts! Master each area completely—understand customer preferences, optimize your dealer's efficiency, and stockpile quality product. A strong foundation in lower districts makes higher-tier success inevitable.</p>
+                    </div>
+
+                    <h4>The Power of Place</h4>
+                    <p>Every district has signature locations that define its character:</p>
+                    <ul>
+                        <li><strong>Northtown:</strong> Dan's Hardware, the Skate Park, abandoned buildings perfect for grows</li>
+                        <li><strong>Westville:</strong> The lakeside boardwalk, construction sites, the affordable Bungalow</li>
+                        <li><strong>Downtown:</strong> The Casino, Mayor's office, legitimate business fronts</li>
+                        <li><strong>Docks:</strong> Massive warehouse, waterfront smuggling routes, industrial concealment</li>
+                        <li><strong>Suburbia:</strong> Perfect lawns hiding perfect crimes, desperate families behind perfect facades</li>
+                        <li><strong>Uptown:</strong> Exclusive clubs, wealthy clients, the peak of your criminal achievement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="characters" style="display: none;">
+                <h2>Characters & NPCs</h2>
+                
+                <div class="collapse-section">
+                    <div class="collapse-header" onclick="toggleCollapse(this)">
+                        <span>Pro Tips</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="collapse-content active">
+                        <ul>
+                            <li>Keep high-value customers (Very High/High spenders) for direct sales to maximize XP and profits</li>
+                            <li>Assign Low-Medium spenders to your dealers for efficient inventory management</li>
+                            <li>Match product quality to district standards - Uptown requires Heavenly quality</li>
+                            <li>Use the Contacts app on your phone to see relationship levels and connections</li>
+                            <li>Always match customers with nearby dealers as distance matters - long travel times slow everything down</li>
+                            <li>Assign customers who don't ask for tons of products to dealers - save high-quantity orders for yourself</li>
+                            <li>Build relationships with customers connected to dealers to unlock new dealer contacts</li>
+                            <li>Offer free samples to new customers matching their favorite effects for better acceptance rates</li>
+                            <li>Use the Products app on your phone to list drugs for sale - customers will message you directly</li>
+                            <li>Dealers will text you when they're out of inventory - restock them promptly to maintain sales</li>
+                            <li>If dealers get stuck, remove all their inventory and wait for their restock text to reset their AI</li>
+                            <li>Each dealer can serve up to 8 customers - choose wisely for maximum efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Northtown (Starting District)</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Benji Coleman</h4>
+                        <p>Dealer - Motel Room #2</p>
+                        <span class="tag">First Dealer</span>
+                        <span class="tag">$500 Sign-on</span>
+                    </div>
+                    <div class="info-card">
+                        <h4>Albert Hoover</h4>
+                        <p>Supplier - Weed Seeds</p>
+                        <span class="tag">Marijuana Seeds</span>
+                        <span class="tag">OG Kush, Green Crack</span>
+                    </div>
+                </div>
+
+                <table class="wiki-table">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Type</th>
+                            <th>Spending Level</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Beth Penn</td>
+                            <td>Customer</td>
+                            <td>Low-Medium</td>
+                            <td>Low standards, unlock connection for Benji</td>
+                        </tr>
+                        <tr>
+                            <td>Chloe Bowers</td>
+                            <td>Customer</td>
+                            <td>Low-Medium</td>
+                            <td>Gas Station worker, unlock Benji</td>
+                        </tr>
+                        <tr>
+                            <td>Ludwig Meyer</td>
+                            <td>Customer</td>
+                            <td>Low-Medium</td>
+                            <td>Can unlock Benji through them</td>
+                        </tr>
+                        <tr>
+                            <td>Donna Martin</td>
+                            <td>Customer</td>
+                            <td>Low</td>
+                            <td>Regular customer, low requirements</td>
+                        </tr>
+                        <tr>
+                            <td>Kathy Henderson</td>
+                            <td>Customer</td>
+                            <td>Low</td>
+                            <td>Low standards, regular buyer</td>
+                        </tr>
+                        <tr>
+                            <td>Mick Lubbin</td>
+                            <td>Customer</td>
+                            <td>Low</td>
+                            <td>Low standards customer</td>
+                        </tr>
+                        <tr>
+                            <td>Mrs. Ming</td>
+                            <td>Customer</td>
+                            <td>Low</td>
+                            <td>Preferred ingredients: high factors</td>
+                        </tr>
+                        <tr>
+                            <td>Sam Thompson</td>
+                            <td>Customer</td>
+                            <td>Low</td>
+                            <td>Effect preferences: Munchies, Athletic, Smelly</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Westville (Rank: Hoodlum)</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Molly Presley</h4>
+                        <p>Dealer - Brown Apartment #1</p>
+                        <span class="tag">Second Dealer</span>
+                        <span class="tag">$1,000 Sign-on</span>
+                    </div>
+                    <div class="info-card">
+                        <h4>Shirley Watts</h4>
+                        <p>Supplier - Pseudo (Meth)</p>
+                        <span class="tag">Pseudo</span>
+                        <span class="tag">Multiple variants</span>
+                    </div>
+                </div>
+
+                <table class="wiki-table">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Type</th>
+                            <th>Spending Level</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Charles Rowland</td>
+                            <td>Customer</td>
+                            <td>Low</td>
+                            <td>Standard district customer</td>
+                        </tr>
+                        <tr>
+                            <td>Doris Lubbin</td>
+                            <td>Customer</td>
+                            <td>Low</td>
+                            <td>Regular buyer</td>
+                        </tr>
+                        <tr>
+                            <td>Jerry Montero</td>
+                            <td>Customer</td>
+                            <td>Low-Medium</td>
+                            <td>Unlock Shirley Watts supplier</td>
+                        </tr>
+                        <tr>
+                            <td>Joyce Ball</td>
+                            <td>Customer</td>
+                            <td>Low</td>
+                            <td>Regular customer</td>
+                        </tr>
+                        <tr>
+                            <td>Keith Wagner</td>
+                            <td>Customer</td>
+                            <td>Low</td>
+                            <td>Accepts very low quality product</td>
+                        </tr>
+                        <tr>
+                            <td>Kim Delaney</td>
+                            <td>Customer</td>
+                            <td>Low</td>
+                            <td>Works a job, may be busy</td>
+                        </tr>
+                        <tr>
+                            <td>Meg Cooley</td>
+                            <td>Customer</td>
+                            <td>Medium</td>
+                            <td>Unlock Shirley Watts supplier</td>
+                        </tr>
+                        <tr>
+                            <td>Trent Sherman</td>
+                            <td>Customer</td>
+                            <td>Low-Medium</td>
+                            <td>Can be stingy, unlock Shirley</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Downtown (Rank: Hustler)</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Brad Crosby</h4>
+                        <p>Dealer - Parking Garage</p>
+                        <span class="tag">Third Dealer</span>
+                        <span class="tag">$2,000 Sign-on</span>
+                    </div>
+                </div>
+
+                <table class="wiki-table">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Type</th>
+                            <th>Spending Level</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Elizabeth Homley</td>
+                            <td>Customer</td>
+                            <td>Medium</td>
+                            <td>Effects: Sedating, Tropic Thunder, Toxic</td>
+                        </tr>
+                        <tr>
+                            <td>Eugene Buckley</td>
+                            <td>Customer</td>
+                            <td>Medium</td>
+                            <td>Effects: Schizophrenic, Toxic, Calming</td>
+                        </tr>
+                        <tr>
+                            <td>Greg Figgle</td>
+                            <td>Customer</td>
+                            <td>Low</td>
+                            <td>Accepts low/very low quality product</td>
+                        </tr>
+                        <tr>
+                            <td>Jennifer Rivera</td>
+                            <td>Customer</td>
+                            <td>Medium</td>
+                            <td>Regular downtown customer</td>
+                        </tr>
+                        <tr>
+                            <td>Kevin Oakley</td>
+                            <td>Customer</td>
+                            <td>Medium</td>
+                            <td>No specific preferences</td>
+                        </tr>
+                        <tr>
+                            <td>Louis Fourier</td>
+                            <td>Customer</td>
+                            <td>Medium</td>
+                            <td>Regular customer</td>
+                        </tr>
+                        <tr>
+                            <td>Lucy Pennington</td>
+                            <td>Customer</td>
+                            <td>Medium</td>
+                            <td>Effects: Calorie-Dense, Euphoric, Glowing</td>
+                        </tr>
+                        <tr>
+                            <td>Randy Caulfield</td>
+                            <td>Customer</td>
+                            <td>Medium</td>
+                            <td>No specific preferences</td>
+                        </tr>
+                        <tr>
+                            <td>Philip Wentworth</td>
+                            <td>Customer</td>
+                            <td>Medium</td>
+                            <td>Effects: Refreshing, Shrinking, Foggy</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Docks (Rank: Enforcer)</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Jane Lucero</h4>
+                        <p>Dealer - Docks RV</p>
+                        <span class="tag">Fourth Dealer</span>
+                        <span class="tag">$3,000 Sign-on</span>
+                    </div>
+                    <div class="info-card">
+                        <h4>Salvador Moreno</h4>
+                        <p>Supplier - Coca Seeds</p>
+                        <span class="tag">Cocaine</span>
+                        <span class="tag">High profit</span>
+                    </div>
+                </div>
+
+                <table class="wiki-table">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Type</th>
+                            <th>Spending Level</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Anna Chesterfield</td>
+                            <td>Customer</td>
+                            <td>Medium-High</td>
+                            <td>Regular customer</td>
+                        </tr>
+                        <tr>
+                            <td>Cranky Frank</td>
+                            <td>Customer</td>
+                            <td>Medium-High</td>
+                            <td>Moderate standards</td>
+                        </tr>
+                        <tr>
+                            <td>Genghis Barn</td>
+                            <td>Customer</td>
+                            <td>Low</td>
+                            <td>Accepts low/very low quality</td>
+                        </tr>
+                        <tr>
+                            <td>Javier Perez</td>
+                            <td>Customer</td>
+                            <td>Medium-High</td>
+                            <td>Unlock Salvador Moreno supplier</td>
+                        </tr>
+                        <tr>
+                            <td>Lisa Gardener</td>
+                            <td>Customer</td>
+                            <td>Medium-High</td>
+                            <td>Regular customer</td>
+                        </tr>
+                        <tr>
+                            <td>Mac Cooper</td>
+                            <td>Customer</td>
+                            <td>Medium-High</td>
+                            <td>Unlock Salvador Moreno supplier</td>
+                        </tr>
+                        <tr>
+                            <td>Marco Barone</td>
+                            <td>Customer</td>
+                            <td>Medium-High</td>
+                            <td>Regular customer</td>
+                        </tr>
+                        <tr>
+                            <td>Melissa Wood</td>
+                            <td>Customer</td>
+                            <td>Medium-High</td>
+                            <td>Regular customer</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Suburbia (Rank: Block Boss)</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Wei Long</h4>
+                        <p>Dealer - Suburbia Shack (in woods)</p>
+                        <span class="tag">Fifth Dealer</span>
+                        <span class="tag">$4,000 Sign-on</span>
+                    </div>
+                </div>
+
+                <table class="wiki-table">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Type</th>
+                            <th>Spending Level</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Alison Knight</td>
+                            <td>Customer</td>
+                            <td>High</td>
+                            <td>High-quality standards</td>
+                        </tr>
+                        <tr>
+                            <td>Carl Bundy</td>
+                            <td>Customer</td>
+                            <td>High</td>
+                            <td>Premium customer</td>
+                        </tr>
+                        <tr>
+                            <td>Chris Sullivan</td>
+                            <td>Customer</td>
+                            <td>High</td>
+                            <td>High standards</td>
+                        </tr>
+                        <tr>
+                            <td>Dennis Kennedy</td>
+                            <td>Customer</td>
+                            <td>High</td>
+                            <td>Premium customer</td>
+                        </tr>
+                        <tr>
+                            <td>Hank Stevenson</td>
+                            <td>Customer</td>
+                            <td>High</td>
+                            <td>High-quality requirements</td>
+                        </tr>
+                        <tr>
+                            <td>Jackie Stevenson</td>
+                            <td>Customer</td>
+                            <td>High</td>
+                            <td>Premium customer</td>
+                        </tr>
+                        <tr>
+                            <td>Jeff Gilmore</td>
+                            <td>Customer</td>
+                            <td>High</td>
+                            <td>Effects: Sedating, Long Faced, Laxative</td>
+                        </tr>
+                        <tr>
+                            <td>Jeremy Wilkinson</td>
+                            <td>Customer</td>
+                            <td>High</td>
+                            <td>Premium customer</td>
+                        </tr>
+                        <tr>
+                            <td>Karen Kennedy</td>
+                            <td>Customer</td>
+                            <td>High</td>
+                            <td>High standards</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Uptown (Rank: Baron)</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Leo Rivers</h4>
+                        <p>Dealer - Near Church in shipping container</p>
+                        <span class="tag">Final Dealer</span>
+                        <span class="tag">$5,000 Sign-on</span>
+                    </div>
+                </div>
+
+                <table class="wiki-table">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Type</th>
+                            <th>Spending Level</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Fiona Hancock</td>
+                            <td>Customer</td>
+                            <td>Very High</td>
+                            <td>Premium standards required</td>
+                        </tr>
+                        <tr>
+                            <td>Jen Heard</td>
+                            <td>Customer</td>
+                            <td>Very High</td>
+                            <td>Premium customer</td>
+                        </tr>
+                        <tr>
+                            <td>Herbert Blueball</td>
+                            <td>Customer</td>
+                            <td>Very High</td>
+                            <td>Very high standards</td>
+                        </tr>
+                        <tr>
+                            <td>Lily Turner</td>
+                            <td>Customer</td>
+                            <td>Very High</td>
+                            <td>Premium customer, key to unlock Leo</td>
+                        </tr>
+                        <tr>
+                            <td>Michael Boog</td>
+                            <td>Customer</td>
+                            <td>Very High</td>
+                            <td>Very high standards</td>
+                        </tr>
+                        <tr>
+                            <td>Pearl Moore</td>
+                            <td>Customer</td>
+                            <td>Very High</td>
+                            <td>Premium customer</td>
+                        </tr>
+                        <tr>
+                            <td>Ray Hoffman</td>
+                            <td>Customer</td>
+                            <td>Very High</td>
+                            <td>Premium customer</td>
+                        </tr>
+                        <tr>
+                            <td>Walter Cussler</td>
+                            <td>Customer</td>
+                            <td>Very High</td>
+                            <td>Very high standards</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="gameplay" style="display: none;">
+                <h2>Gameplay Mechanics</h2>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="switchGameplayTab(event, 'basics')">Game Basics</button>
+                    <button class="tab" onclick="switchGameplayTab(event, 'controls')">Controls</button>
+                    <button class="tab" onclick="switchGameplayTab(event, 'production')">Production</button>
+                    <button class="tab" onclick="switchGameplayTab(event, 'distribution')">Distribution</button>
+                    <button class="tab" onclick="switchGameplayTab(event, 'police')">Police System</button>
+                    <button class="tab" onclick="switchGameplayTab(event, 'combat')">Combat</button>
+                    <button class="tab" onclick="switchGameplayTab(event, 'economy')">Economy</button>
+                </div>
+
+                <div id="basics" class="tab-content active">
+                    <h3>Core Gameplay Loop</h3>
+                    <p>Schedule 1 combines empire building with criminal simulation mechanics. Start as a small-time dealer and work your way up to kingpin through production, distribution, and strategic expansion.</p>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Progression System</h4>
+                            <p>11 ranks from Street Rat to Kingpin</p>
+                            <span class="tag">Unlock Districts</span>
+                            <span class="tag">New Dealers</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Save System</h4>
+                            <p>Manual saves only - use intercoms at bases</p>
+                            <span class="tag">No Auto-Save</span>
+                            <span class="tag">Essential</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Multiplayer</h4>
+                            <p>2-4 player co-op supported</p>
+                            <span class="tag">Steam Invite</span>
+                            <span class="tag">Same Version</span>
+                        </div>
+                    </div>
+
+                    <h4>Quality Tiers</h4>
+                    <p>All products have 5 quality levels, color-coded for easy recognition:</p>
+                    <ul>
+                        <li><strong>Garbo</strong> - Red (Lowest quality)</li>
+                        <li><strong>Standard</strong> - Orange</li>
+                        <li><strong>Premium</strong> - Yellow</li>
+                        <li><strong>Flame</strong> - Green</li>
+                        <li><strong>Heavenly</strong> - Blue (Highest quality)</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <h4>Early Game Tips</h4>
+                        <ul>
+                            <li>Save before leaving the RV and harvest existing plants</li>
+                            <li>Take all equipment: Grow Light Rack, Pots, Scissors, Watering Can</li>
+                            <li>Look for "Potential Customer" markers on the map</li>
+                            <li>Give free samples to unlock future orders</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="controls" class="tab-content">
+                    <h3>Game Controls</h3>
+                    
+                    <h4>Movement & Interaction</h4>
+                    <div class="command-box">
+                        <span class="kbd">W</span> <span class="kbd">A</span> <span class="kbd">S</span> <span class="kbd">D</span> - Move (Forward/Left/Back/Right)<br>
+                        <span class="kbd">E</span> - Interact<br>
+                        <span class="kbd">Tab</span> - Open phone<br>
+                        <span class="kbd">M</span> - Open map<br>
+                        <span class="kbd">9</span> - Equip clipboard (employee management)<br>
+                        <span class="kbd">Space</span> - Jump/Handbrake (vehicles)
+                    </div>
+
+                    <h4>Inventory Management</h4>
+                    <div class="command-box">
+                        <span class="kbd">Right Click</span> - Move single item/Pick up furniture<br>
+                        <span class="kbd">Shift + Right Click</span> - Move one from stack<br>
+                        <span class="kbd">Scroll Wheel</span> - Adjust quantity (Up: +50, Down: -10/-1)<br>
+                        <span class="kbd">Left Click + Drag</span> - Move items in inventory
+                    </div>
+
+                    <h4>Vehicle Controls</h4>
+                    <div class="command-box">
+                        <span class="kbd">W</span> <span class="kbd">A</span> <span class="kbd">S</span> <span class="kbd">D</span> - Drive<br>
+                        <span class="kbd">Right Click</span> - Free look<br>
+                        <span class="kbd">Space</span> - Handbrake
+                    </div>
+
+                    <h4>Skateboard Controls</h4>
+                    <div class="command-box">
+                        <span class="kbd">Left Click</span> - Mount/Dismount<br>
+                        <span class="kbd">Space</span> - Hold to charge jump
+                    </div>
+
+                    <h4>Advanced Actions</h4>
+                    <div class="command-box">
+                        <span class="kbd">Ctrl</span> - Crouch<br>
+                        <span class="kbd">Shift</span> - Sprint<br>
+                        <span class="kbd">F</span> - Flashlight<br>
+                        <span class="kbd">T</span> - Trash pickup
+                    </div>
+                </div>
+
+                <div id="production" class="tab-content">
+                    <h3>Drug Production</h3>
+                    
+                    <h4>Cannabis Production</h4>
+                    <p>The most accessible production method for beginners. Cannabis offers consistent profits with lower risk compared to other drugs.</p>
+                    
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Basic Setup Requirements</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <ul>
+                                <li>Grow Tent ($150)</li>
+                                <li>Soil (Standard $20, Long-Life $40, Extra-Life $60)</li>
+                                <li>Seeds (from Albert via dead drops)</li>
+                                <li>Watering Can</li>
+                                <li>Scissors (for harvesting)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Cannabis Soil Types & Growth Cycles</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <ul>
+                                <li><strong>Standard Soil</strong> - 1 grow cycle</li>
+                                <li><strong>Long-Life Soil</strong> - 2 grow cycles</li>
+                                <li><strong>Extra-Life Soil</strong> - 3 grow cycles</li>
+                            </ul>
+                            <p><strong>Note:</strong> Extra-Life soil is the most economical choice for large-scale operations</p>
+                        </div>
+                    </div>
+
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Cannabis Quality Enhancement Methods</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <div class="info-grid">
+                                <div class="info-card">
+                                    <h4>Fertilizer</h4>
+                                    <p>Boosts quality by 1 tier (Standard → Premium)</p>
+                                    <span class="tag">Quality +1</span>
+                                    <span class="tag">$50 per pot</span>
+                                </div>
+                                <div class="info-card">
+                                    <h4>PGR</h4>
+                                    <p>Increases yield +77.78% but reduces quality</p>
+                                    <span class="tag">Yield +77%</span>
+                                    <span class="tag">Quality -1</span>
+                                </div>
+                                <div class="info-card">
+                                    <h4>Speed Grow</h4>
+                                    <p>Speeds growth by 50%, reduces quality</p>
+                                    <span class="tag">Speed +50%</span>
+                                    <span class="tag">Quality -1</span>
+                                </div>
+                                <div class="info-card">
+                                    <h4>Drying Racks</h4>
+                                    <p>Dries buds for ~24 in-game hours to boost quality to Heavenly</p>
+                                    <span class="tag">Heavenly Quality</span>
+                                    <span class="tag">24 Hours</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Optimal Cannabis Setup</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <div class="tip-box" style="margin-left: 10px; border-left: 4px solid var(--accent-orange); padding-left: 20px;">
+                                <h4 style="margin-top: 0;">Efficient 8-Tent Layout</h4>
+                                <ol>
+                                    <li>Place 1 medium storage unit as supply shelf</li>
+                                    <li>Arrange 2 rows of 4 grow tents facing each other</li>
+                                    <li>Position tents 1 unit to the side and 1 unit in front of shelf</li>
+                                    <li>Dedicate all pots to same seed type</li>
+                                    <li>Assign botanist to the setup</li>
+                                    <li>Set botanist to leave raw product on large shelf</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Methamphetamine Production</h4>
+                    <p>More complex than cannabis, with higher profit potential but increased risk and resource requirements.</p>
+                    
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Meth Equipment & Process</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <h4>Required Equipment</h4>
+                            <ul>
+                                <li>Chemistry Station - for mixing base chemicals</li>
+                                <li>Lab Oven - for crystallizing liquid meth</li>
+                            </ul>
+                            
+                            <h4>Meth Production Ingredients</h4>
+                            <ul>
+                                <li>Acid (x1) - Found in warehouse</li>
+                                <li>Phosphorus (x1) - Found in warehouse</li>
+                                <li>Pseudoephedrine (x1) - From Shirley Watts supplier</li>
+                            </ul>
+                            
+                            <h4>Meth Production Steps</h4>
+                            <ol>
+                                <li>Mix base at Chemistry Station: Acid + Phosphorus + Pseudo = Liquid Meth</li>
+                                <li>Process Liquid Meth in Lab Oven to create crystallized product</li>
+                            </ol>
+                            
+                            <p><strong>Note:</strong> Meth quality depends entirely on pseudo quality</p>
+                        </div>
+                    </div>
+
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Optimal Meth Production Setup</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <div class="tip-box" style="margin-left: 10px; border-left: 4px solid var(--accent-orange); padding-left: 20px;">
+                                <h4 style="margin-top: 0;">Efficient Lab Layout</h4>
+                                <ol>
+                                    <li>Place Chemistry Station near supply shelf</li>
+                                    <li>Position Lab Oven adjacent to Chemistry Station</li>
+                                    <li>Set up medium shelf for liquid meth storage</li>
+                                    <li>Assign chemist to lab operations</li>
+                                    <li>Stock sufficient supplies of acid and phosphorus</li>
+                                    <li>Always keep backup pseudo supply for consistent production</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Cocaine Production</h4>
+                    <p>High-value product requiring cultivation and processing. Unlocked in the Docks district through Salvador Moreno.</p>
+                    
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Coca Production Process</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <h4>Required Equipment</h4>
+                            <ul>
+                                <li>Grow Tent - for coca plants</li>
+                                <li>Chemistry Station - for processing coca leaves</li>
+                                <li>Standard growing supplies (soil, watering can, scissors)</li>
+                            </ul>
+                            
+                            <h4>Cocaine Production Steps</h4>
+                            <ol>
+                                <li>Grow coca plants in tents (similar to cannabis)</li>
+                                <li>Harvest coca leaves when plants mature</li>
+                                <li>Process leaves at Chemistry Station to create cocaine</li>
+                            </ol>
+                            
+                            <h4>Coca Cultivation Tips</h4>
+                            <ul>
+                                <li>Use fertilizer and drying racks like cannabis for quality</li>
+                                <li>Coca plants grow similar to weed but process differently</li>
+                                <li>Final cocaine quality depends on leaf quality</li>
+                                <li>Higher profit margins justify premium equipment investment</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Optimal Cocaine Production Setup</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <div class="tip-box" style="margin-left: 10px; border-left: 4px solid var(--accent-orange); padding-left: 20px;">
+                                <h4 style="margin-top: 0;">Efficient Coca Lab Layout</h4>
+                                <ol>
+                                    <li>Set up grow area with premium tents and soil</li>
+                                    <li>Position Chemistry Station near grow area</li>
+                                    <li>Add drying racks for leaf quality improvement</li>
+                                    <li>Assign botanist to coca cultivation</li>
+                                    <li>Dedicate chemist to leaf processing</li>
+                                    <li>Create secure storage for finished product</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Advanced Production Strategies</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <ul>
+                                <li>Always keep a supply of pseudo as it's not always available</li>
+                                <li>Pseudo quality directly influences final meth quality</li>
+                                <li>Use mixing stations for custom drug blends and enhanced effects</li>
+                                <li>Learn mixing recipes to create valuable variants</li>
+                                <li>Coca requires Salvador Moreno supplier (unlock in Docks)</li>
+                                <li>Premium cocaine demands justify higher production costs</li>
+                                <li>Balance production between products based on district demand</li>
+                                <li>Automate with workers for large-scale operations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="distribution" class="tab-content">
+                    <h3>Distribution System</h3>
+                    
+                    <h4>Direct Sales Methods</h4>
+                    <ul>
+                        <li><strong>Walking</strong> - Basic movement, good for local sales</li>
+                        <li><strong>Skateboarding</strong> - Faster, fun physics, good for police evasion</li>
+                        <li><strong>Driving</strong> - Fastest, higher capacity, risk of police checkpoints</li>
+                    </ul>
+
+                    <h4>Dealer Management</h4>
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Recruiting & Managing Dealers</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <h4>Dealer Recruitment</h4>
+                            <ul>
+                                <li>Dealers unlock through customer relationships</li>
+                                <li>Each district has one main dealer contact</li>
+                                <li>Build relationships with specific customers to unlock dealers</li>
+                                <li>Dealers require sign-on bonuses (increasing by district)</li>
+                            </ul>
+                            
+                            <h4>Dealer Operations</h4>
+                            <ul>
+                                <li>Each dealer can serve up to 8 customers</li>
+                                <li>Dealers take 20% commission on sales</li>
+                                <li>Supply dealers regularly - they'll text when low</li>
+                                <li>Monitor supply vs demand to prevent stockouts</li>
+                                <li>Match customers with nearby dealers for efficiency</li>
+                                <li>Remove inventory and wait for restock text to reset stuck AI</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4>Worker Management</h4>
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Recruiting & Managing Workers</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <h4>Worker Recruitment</h4>
+                            <ul>
+                                <li>Recruit from Warehouse District (the barn) after 6 PM</li>
+                                <li>Visit the Warehouse District and look for workers in the large barn building</li>
+                                <li>Workers have set daily wages and sign-on bonuses</li>
+                                <li>Each worker adds to the cost of future workers (+$100 per previous hire, max +$500)</li>
+                            </ul>
+                            
+                            <h4>Worker Types & Costs</h4>
+                            <table class="wiki-table">
+                                <thead>
+                                    <tr>
+                                        <th>Worker Type</th>
+                                        <th>Base Sign-on</th>
+                                        <th>Daily Wage</th>
+                                        <th>Specialties</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Botanist</td>
+                                        <td>$500</td>
+                                        <td>$200</td>
+                                        <td>Grow operation management, harvesting</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Chemist</td>
+                                        <td>$700</td>
+                                        <td>$300</td>
+                                        <td>Lab work, meth/cocaine processing</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Runner</td>
+                                        <td>$300</td>
+                                        <td>$100</td>
+                                        <td>Delivery, transportation</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muscle</td>
+                                        <td>$600</td>
+                                        <td>$250</td>
+                                        <td>Security, combat</td>
+                                    </tr>
+                                    <tr>
+                                        <td>General Laborer</td>
+                                        <td>$200</td>
+                                        <td>$75</td>
+                                        <td>Basic tasks, inventory management</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <p><strong>Note:</strong> Each worker hired increases subsequent sign-on costs by $100 (max increase: +$500)</p>
+                            
+                            <h4>Worker Management Tips</h4>
+                            <ul>
+                                <li>Assign workers to specific tasks for efficiency</li>
+                                <li>Keep workers supplied with necessary materials</li>
+                                <li>Monitor worker activity through clipboard (key 9)</li>
+                                <li>Set clear storage locations for worker outputs</li>
+                                <li>Workers get paid daily - maintain cash for wages</li>
+                                <li>Some workers may consume resources inefficiently</li>
+                                <li>Botanists excel at automated grow operations</li>
+                                <li>Chemists are essential for large-scale meth/cocaine production</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4>Customer Management</h4>
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Customer Relationship Building</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <ul>
+                                <li>Offer free samples to unlock new customers</li>
+                                <li>Match product effects to customer preferences</li>
+                                <li>Price competitively - check fair price indicator</li>
+                                <li>Use Products app to list items for direct customer messages</li>
+                                <li>Build relationships through consistent service and quality products</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4>Pricing Strategy</h4>
+                    <div class="tip-box">
+                        <h4>Pricing Tips</h4>
+                        <ul>
+                            <li>Match quality to district expectations for optimal prices</li>
+                            <li>Counter-offers shouldn't be too high - check fair price</li>
+                            <li>Build relationships before raising prices significantly</li>
+                            <li>Premium districts pay more for quality products</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="police" class="tab-content">
+                    <h3>Police System</h3>
+                    
+                    <h4>Police Alert Levels</h4>
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Understanding Alert States</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <ul>
+                                <li><strong>Investigating</strong> - Police notified, en route to location</li>
+                                <li><strong>Under Arrest</strong> - Police attempt arrest without force</li>
+                                <li><strong>Wanted</strong> - Active chase, stun guns deployed</li>
+                                <li><strong>Wanted Dead or Alive</strong> - Lethal force authorized (60 XP for escape)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4>Police Detection Methods</h4>
+                    <ul>
+                        <li>Random inventory searches when near officers</li>
+                        <li>Bridge checkpoints (guaranteed search)</li>
+                        <li>Making deals in sight of police</li>
+                        <li>Pickpocketing while being observed</li>
+                        <li>Curfew violations (night time)</li>
+                        <li>Violence or weapon displays</li>
+                    </ul>
+
+                    <h4>Evasion Strategies</h4>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Inventory Management</h4>
+                            <p>Keep illegal items in alternate slots during searches</p>
+                            <span class="tag">Gap Strategy</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Skateboard Physics</h4>
+                            <p>Use for quick escapes and checkpoint evasion</p>
+                            <span class="tag">Speed Boost</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Curfew Bonus</h4>
+                            <p>Deliveries during curfew pay extra but increase risk</p>
+                            <span class="tag">Higher Rewards</span>
+                        </div>
+                    </div>
+
+                    <h4>If Caught</h4>
+                    <ul>
+                        <li>All illegal products confiscated</li>
+                        <li>Fines based on crime severity</li>
+                        <li>Higher-level crimes = higher penalties</li>
+                        <li>Don't carry entire stash - minimize losses</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <h4>Police Avoidance Tips</h4>
+                        <ul>
+                            <li>Police detection is limited - no rear vision</li>
+                            <li>Keep weapons and drugs hidden when not in use</li>
+                            <li>Use alternate routes to avoid known checkpoints</li>
+                            <li>Time deliveries during low-patrol hours when possible</li>
+                            <li>XP farming: Point weapon at police for "Wanted Dead or Alive" status (60 XP per escape)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="combat" class="tab-content">
+                    <h3>Combat System</h3>
+                    
+                    <h4>Combat Controls</h4>
+                    <div class="command-box">
+                        <span class="kbd">Left Click</span> - Punch<br>
+                        <span class="kbd">Right Click</span> - Heavy punch<br>
+                        <span class="kbd">Shift</span> - Sprint<br>
+                        <span class="kbd">Ctrl</span> - Crouch<br>
+                        <span class="kbd">Space</span> - Jump/Dodge
+                    </div>
+
+                    <h4>Combat Options</h4>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Fists</h4>
+                            <p>Basic melee combat</p>
+                            <span class="tag">Always Available</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Melee Weapons</h4>
+                            <p>Enhanced damage weapons</p>
+                            <span class="tag">Baseball Bats</span>
+                            <span class="tag">Other Tools</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Firearms</h4>
+                            <p>Ranged combat options</p>
+                            <span class="tag">High Damage</span>
+                            <span class="tag">Police Attention</span>
+                        </div>
+                    </div>
+
+                    <h4>Combat Situations</h4>
+                    <ul>
+                        <li><strong>Customer Disputes</strong> - Pricing or product disagreements</li>
+                        <li><strong>Police Encounters</strong> - Avoid when possible, fight as last resort</li>
+                        <li><strong>Property Defense</strong> - Protect your investments from threats</li>
+                        <li><strong>Street Conflicts</strong> - Random encounters in certain districts</li>
+                    </ul>
+
+                    <h4>Stamina Management</h4>
+                    <ul>
+                        <li>Sprint and heavy attacks drain stamina</li>
+                        <li>Manage stamina during extended fights</li>
+                        <li>Use environment for tactical advantage</li>
+                        <li>Know when to run vs fight</li>
+                    </ul>
+                </div>
+
+                <div id="economy" class="tab-content">
+                    <h3>Economic Systems</h3>
+                    
+                    <h4>Understanding the Dual Currency System</h4>
+                    <p>Schedule 1 features a sophisticated economy with two distinct monetary forms, each serving specific purposes in your criminal enterprise.</p>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Cash (Dirty Money)</h4>
+                            <p>Physical money earned from drug sales, used for illegal goods</p>
+                            <span class="tag">Drug Sales</span>
+                            <span class="tag">Seed Purchases</span>
+                            <span class="tag">Warehouse Goods</span>
+                        </div>
+                        <div class="info-card">
+                            <h4>Debit (Clean Money)</h4>
+                            <p>Digital money for legitimate purchases and businesses</p>
+                            <span class="tag">Properties</span>
+                            <span class="tag">Vehicles</span>
+                            <span class="tag">Equipment</span>
+                        </div>
+                    </div>
+
+                    <h4>Cash Sources</h4>
+                    <ul>
+                        <li><strong>Drug Sales</strong> - Primary income source from customer deals</li>
+                        <li><strong>Dealer Commissions</strong> - Profits from dealer network (you keep 80%)</li>
+                        <li><strong>ATM Robbery</strong> - Strike ATMs/Cuke machines with charged baseball bat hits</li>
+                        <li><strong>Pickpocketing</strong> - High-risk income from NPCs</li>
+                        <li><strong>Gambling Winnings</strong> - Casino payouts (automatically cleaned money)</li>
+                    </ul>
+
+                    <h4>The ATM Deposit System</h4>
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Weekly Limits & Restrictions</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <ul>
+                                <li><strong>Maximum Deposit:</strong> $10,000 per week</li>
+                                <li><strong>Reset Schedule:</strong> Every Monday</li>
+                                <li><strong>Location:</strong> Any ATM across Hyland Point</li>
+                                <li><strong>Function:</strong> Converts cash to debit for legitimate purchases</li>
+                                <li><strong>Restriction:</strong> Bank flags suspicious behavior beyond limit</li>
+                            </ul>
+                            <p><strong>Pro Tip:</strong> Don't wait until you hit the limit—small, regular deposits appear less suspicious</p>
+                        </div>
+                    </div>
+
+                    <h4>Money Laundering Businesses</h4>
+                    <p>To bypass the $10,000 weekly ATM limit, you need to purchase legitimate businesses for money laundering operations.</p>
+                    
+                    <table class="wiki-table">
+                        <thead>
+                            <tr>
+                                <th>Business</th>
+                                <th>Purchase Price</th>
+                                <th>Daily Laundering Limit</th>
+                                <th>Value/Cost Ratio</th>
+                                <th>Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Laundromat</td>
+                                <td>$4,000</td>
+                                <td>$2,000</td>
+                                <td>Cheapest entry</td>
+                                <td>Downtown</td>
+                            </tr>
+                            <tr>
+                                <td>Post Office</td>
+                                <td>$15,000</td>
+                                <td>$4,000</td>
+                                <td>Good balance</td>
+                                <td>Downtown</td>
+                            </tr>
+                            <tr>
+                                <td>Car Wash</td>
+                                <td>$25,000</td>
+                                <td>$6,000</td>
+                                <td>Efficient</td>
+                                <td>Westville</td>
+                            </tr>
+                            <tr>
+                                <td>Taco Ticklers</td>
+                                <td>$50,000</td>
+                                <td>$8,000</td>
+                                <td>Premium option</td>
+                                <td>Suburbia</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="tip-box">
+                        <h4>Laundering Process</h4>
+                        <ul>
+                            <li>Visit the back room of your business</li>
+                            <li>Use the PC to select laundering amount</li>
+                            <li>Wait 24 in-game hours for processing</li>
+                            <li>Money appears in your debit account</li>
+                            <li>No weekly limits on laundered funds</li>
+                        </ul>
+                    </div>
+
+                    <h4>Strategic Money Management</h4>
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Cash Flow Optimization</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <h4>Cash Uses</h4>
+                            <ul>
+                                <li>Seed purchases from Albert</li>
+                                <li>Chemicals and equipment from warehouse</li>
+                                <li>Pseudo supplies from Shirley Watts</li>
+                                <li>Dead drops for illegal items</li>
+                                <li>Employee daily wages</li>
+                            </ul>
+                            
+                            <h4>Debit Uses</h4>
+                            <ul>
+                                <li>Property purchases through Ray's Realty</li>
+                                <li>Vehicles from Hyland Auto</li>
+                                <li>Legal equipment from Dan's Hardware</li>
+                                <li>Business investments for laundering</li>
+                                <li>Worker sign-on bonuses</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4>Alternative Money Cleaning</h4>
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Casino & Risk-Based Methods</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <ul>
+                                <li><strong>Casino Gambling:</strong> Any winnings automatically become clean money</li>
+                                <li><strong>Property Flipping:</strong> Buy low, sell high with clean proceeds</li>
+                                <li><strong>Vehicle Trading:</strong> Purchase cash vehicles, sell for debit</li>
+                                <li><strong>Employee Laundering:</strong> Workers can help manage cash flows</li>
+                            </ul>
+                            <p><strong>Warning:</strong> Gambling carries risk—don't bet essential operation funds</p>
+                        </div>
+                    </div>
+
+                    <h4>Business Expansion Strategies</h4>
+                    <div class="collapse-section">
+                        <div class="collapse-header" onclick="toggleCollapse(this)">
+                            <span>Scaling Your Economy</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapse-content">
+                            <ol>
+                                <li><strong>Early Game:</strong> Use ATM deposits and Laundromat for basic needs</li>
+                                <li><strong>Mid Game:</strong> Invest in Post Office or Car Wash for larger laundering</li>
+                                <li><strong>Late Game:</strong> Own all four businesses for $20,000 daily laundering capacity</li>
+                                <li><strong>End Game:</strong> Multiple properties, full automation, diverse income streams</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <h4>Economic Pro Tips</h4>
+                    <div class="tip-box">
+                        <h4>Advanced Money Management</h4>
+                        <ul>
+                            <li>Keep 24-48 hours of operating expenses in cash at all times</li>
+                            <li>Balance laundering across multiple businesses to maximize daily capacity</li>
+                            <li>Time major purchases around Monday ATM limit resets</li>
+                            <li>Use Casino winnings for immediate clean money needs</li>
+                            <li>Maintain separate cash reserves for unexpected police fines</li>
+                            <li>Reinvest in businesses early—they pay for themselves quickly</li>
+                            <li>Track employee wages and supply costs to forecast cash needs</li>
+                            <li>Consider business locations for dual production/laundering operations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="maps" style="display: none;">
+                <h2>Hyland Point Map</h2>
+                
+                <h3>Key Locations</h3>
+                <p>Navigate Hyland Point with confidence using these key location references:</p>
+                
+                <h4>Player-Owned Properties</h4>
+                <ul>
+                    <li>Available through Rays Realty</li>
+                    <li>Marked with blue home icons on map</li>
+                    <li>Customizable and expandable</li>
+                </ul>
+
+                <h4>Important NPCs & Businesses</h4>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Dan's Hardware</h4>
+                        <p>Your first stop - equipment and supplies</p>
+                        <span class="tag">Equipment</span>
+                        <span class="tag">Starting Point</span>
+                    </div>
+                    <div class="info-card">
+                        <h4>Hyland Auto</h4>
+                        <p>Vehicle purchases and customization</p>
+                        <span class="tag">Vehicles</span>
+                        <span class="tag">Transportation</span>
+                    </div>
+                    <div class="info-card">
+                        <h4>Shred Shack</h4>
+                        <p>Skateboard retailer</p>
+                        <span class="tag">Skateboards</span>
+                        <span class="tag">Alternative Transport</span>
+                    </div>
+                    <div class="info-card">
+                        <h4>Warehouse District</h4>
+                        <p>Employee hiring location (after 6 PM)</p>
+                        <span class="tag">Manny</span>
+                        <span class="tag">Recruiting</span>
+                    </div>
+                </div>
+
+                <h4>Shopping & Services</h4>
+                <ul>
+                    <li><strong>Thrifty Threads</strong> - Clothing customization</li>
+                    <li><strong>Top Tattoos</strong> - Character customization</li>
+                    <li><strong>Gas-Mart</strong> - Basic supplies</li>
+                    <li><strong>Mayor's House</strong> - Political connections</li>
+                </ul>
+            </div>
+
+            <div id="items" style="display: none;">
+                <h2>Items & Equipment</h2>
+                
+                <h3>Drug Types</h3>
+                <table class="wiki-table">
+                    <thead>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Production Type</th>
+                            <th>Requirements</th>
+                            <th>Market Demand</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cannabis</td>
+                            <td>Grow Operation</td>
+                            <td>Seeds, soil, nutrients, grow tent</td>
+                            <td>Universal</td>
+                        </tr>
+                        <tr>
+                            <td>Methamphetamine</td>
+                            <td>Chemical Lab</td>
+                            <td>Chemicals, lab equipment, chemist</td>
+                            <td>High risk, high reward</td>
+                        </tr>
+                        <tr>
+                            <td>Custom Blends</td>
+                            <td>Mixing Station</td>
+                            <td>Base drugs, additives</td>
+                            <td>Specialty markets</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Essential Equipment</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Grow Tent</h4>
+                        <p>Essential for cannabis production</p>
+                        <span class="tag">Dan's Hardware</span>
+                        <span class="tag">Production</span>
+                    </div>
+                    <div class="info-card">
+                        <h4>Chemistry Set</h4>
+                        <p>Required for lab production</p>
+                        <span class="tag">Lab Equipment</span>
+                        <span class="tag">Processing</span>
+                    </div>
+                    <div class="info-card">
+                        <h4>Phone</h4>
+                        <p>Mission tracking and communications</p>
+                        <span class="tag">Communication</span>
+                        <span class="tag">Essential</span>
+                    </div>
+                </div>
+
+                <h3>Vehicles</h3>
+                <ul>
+                    <li><strong>Cars</strong> - Available at Hyland Auto</li>
+                    <li><strong>Vans</strong> - Higher cargo capacity</li>
+                    <li><strong>Skateboards</strong> - Quick, discrete transport</li>
+                </ul>
+            </div>
+
+            <div id="guides" style="display: none;">
+                <h2>Strategy Guides</h2>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="switchGuideTab(event, 'beginner')">Beginner Guide</button>
+                    <button class="tab" onclick="switchGuideTab(event, 'advanced')">Advanced Tips</button>
+                    <button class="tab" onclick="switchGuideTab(event, 'achievements')">Achievements</button>
+                </div>
+
+                <div id="beginner" class="tab-content active">
+                    <h3>Getting Started in Schedule 1</h3>
+                    
+                    <div class="tip-box">
+                        <h4>First Steps</h4>
+                        <p>Complete the prologue to understand basic mechanics and meet key contacts.</p>
+                    </div>
+
+                    <ol>
+                        <li><strong>Complete Prologue</strong>
+                            <ul>
+                                <li>Learn movement and interaction</li>
+                                <li>Meet Dan at the hardware store</li>
+                                <li>Understand basic buying/selling</li>
+                            </ul>
+                        </li>
+                        <li><strong>First Operations</strong>
+                            <ul>
+                                <li>Start with cannabis for low risk</li>
+                                <li>Purchase grow tent from Dan's Hardware</li>
+                                <li>Order seeds from Albert via phone</li>
+                            </ul>
+                        </li>
+                        <li><strong>Recruit Your First Dealer</strong>
+                            <ul>
+                                <li>Find Benji through the tutorial</li>
+                                <li>Assign territory and products</li>
+                                <li>Monitor sales and adjust pricing</li>
+                            </ul>
+                        </li>
+                        <li><strong>Scale Your Operations</strong>
+                            <ul>
+                                <li>Buy first property through Rays Realty</li>
+                                <li>Set up efficient grow operation</li>
+                                <li>Hire employees from Warehouse District</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div id="advanced" class="tab-content">
+                    <h3>Advanced Strategies</h3>
+                    
+                    <h4>Optimal Production Layout</h4>
+                    <p>Use the 8-tent configuration for maximum efficiency:</p>
+                    <ul>
+                        <li>2 rows of 4 tents facing each other</li>
+                        <li>Central supply shelf for easy access</li>
+                        <li>Dedicated botanist for automation</li>
+                        <li>Large shelf for processed product storage</li>
+                    </ul>
+
+                    <h4>Economic Optimization</h4>
+                    <ul>
+                        <li>Match product quality to district wealth</li>
+                        <li>Automate supply chains through employees</li>
+                        <li>Diversify product lines to capture all markets</li>
+                        <li>Invest in multiple properties for redundancy</li>
+                    </ul>
+
+                    <h4>Law Enforcement Management</h4>
+                    <ul>
+                        <li>Hide illegal items when police presence increases</li>
+                        <li>Use multiple safe houses for storage</li>
+                        <li>Maintain legitimate businesses as fronts</li>
+                        <li>Build political connections for protection</li>
+                    </ul>
+                </div>
+
+                <div id="achievements" class="tab-content">
+                    <h3>Achievements Guide</h3>
+                    
+                    <table class="wiki-table">
+                        <thead>
+                            <tr>
+                                <th>Achievement</th>
+                                <th>Description</th>
+                                <th>Tips</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Welcome to Hyland Point</td>
+                                <td>Experience an unexpected setback</td>
+                                <td>Story progression</td>
+                            </tr>
+                            <tr>
+                                <td>Dodgy Dealing</td>
+                                <td>Recruit your first dealer</td>
+                                <td>Find Benji early in game</td>
+                            </tr>
+                            <tr>
+                                <td>Master Chef</td>
+                                <td>Manufacture product worth $100+</td>
+                                <td>Quality ingredients = higher value</td>
+                            </tr>
+                            <tr>
+                                <td>Businessman</td>
+                                <td>Reach $100,000 net worth</td>
+                                <td>Expand operations strategically</td>
+                            </tr>
+                            <tr>
+                                <td>Bigwig</td>
+                                <td>Reach $1,000,000 net worth</td>
+                                <td>Multiple properties + automation</td>
+                            </tr>
+                            <tr>
+                                <td>Magnate</td>
+                                <td>Reach $10,000,000 net worth</td>
+                                <td>Full empire with all systems</td>
+                            </tr>
+                            <tr>
+                                <td>Rolling in Style</td>
+                                <td>Purchase golden skateboard</td>
+                                <td>High-end purchase from Shred Shack</td>
+                            </tr>
+                            <tr>
+                                <td>Indian Dealer</td>
+                                <td>Sell then pickpocket same item</td>
+                                <td>Complete transaction then pickpocket</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="community" style="display: none;">
+                <h2>Community Resources</h2>
+                
+                <h3>Official Links</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Steam Store</h4>
+                        <p>Official game page and community hub</p>
+                        <a href="https://store.steampowered.com/app/2524080/Schedule_I/" class="community-link"><i class="fas fa-link"></i> Visit Steam</a>
+                    </div>
+                    <div class="info-card">
+                        <h4>TVGS Development</h4>
+                        <p>Developer updates and roadmap</p>
+                        <span class="tag">Monthly Updates</span>
+                        <span class="tag">2-Year Plan</span>
+                    </div>
+                    <div class="info-card">
+                        <h4>Community Wiki Sites</h4>
+                        <p>Additional resources and guides</p>
+                        <ul style="margin-top: 10px;">
+                            <li><a href="https://schedule1.io/wiki">schedule1.io</a></li>
+                            <li><a href="https://www.schedule1wiki.org/">schedule1wiki.org</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Community Reception</h3>
+                <p>Within 24 hours of release, Schedule 1 reached #1 on Steam's bestseller list with a 99% "Overwhelmingly Positive" rating. The demo attracted over 1.7 million players before the Early Access launch.</p>
+
+                <h3>Known Issues</h3>
+                <ul>
+                    <li>AI behavior can be inconsistent with employees</li>
+                    <li>Employees may consume resources inefficiently</li>
+                    <li>Regular updates addressing community feedback</li>
+                </ul>
+
+                <h3>Development Roadmap</h3>
+                <p>TVGS has outlined plans for:</p>
+                <ul>
+                    <li>Monthly content updates</li>
+                    <li>New districts and properties</li>
+                    <li>Enhanced AI and automation</li>
+                    <li>Additional drug types and mechanics</li>
+                    <li>Multiplayer improvements</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Schedule 1 Wiki | Community-driven content | Not affiliated with TVGS</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functions
+        function switchLoreTab(evt, tabName) {
+            switchTabContent(evt, tabName, 'tab');
+        }
+
+        function switchGameplayTab(evt, tabName) {
+            switchTabContent(evt, tabName, 'tab');
+        }
+
+        function switchGuideTab(evt, tabName) {
+            switchTabContent(evt, tabName, 'tab');
+        }
+
+        function switchTabContent(evt, contentId, className) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = evt.currentTarget.parentElement.getElementsByClassName(className);
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(contentId).style.display = "block";
+            document.getElementById(contentId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Collapse functionality
+        function toggleCollapse(element) {
+            var content = element.nextElementSibling;
+            var icon = element.querySelector('i');
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                content.classList.add('active');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        }
+
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                
+                // Hide all sections
+                document.querySelectorAll('.content > div[id]').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Show target section
+                document.getElementById(targetId).style.display = 'block';
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Search functionality
+        document.getElementById('wikiSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            // Implement search logic here
+            console.log('Searching for:', searchTerm);
+        });
+    </script>
+</body>
+</html>
